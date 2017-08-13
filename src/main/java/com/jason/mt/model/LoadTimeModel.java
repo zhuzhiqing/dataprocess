@@ -8,7 +8,7 @@ public class LoadTimeModel {
 
     private int val_load_time;
 
-    private String ct_poi;
+    private String ct_poi_e;
 
     private String page_type;
 
@@ -30,12 +30,12 @@ public class LoadTimeModel {
         this.val_load_time = val_load_time;
     }
 
-    public String getCt_poi() {
-        return ct_poi;
+    public String getCt_poi_e() {
+        return ct_poi_e;
     }
 
-    public void setCt_poi(String ct_poi) {
-        this.ct_poi = ct_poi;
+    public void setCt_poi_e(String ct_poi_e) {
+        this.ct_poi_e = ct_poi_e;
     }
 
     public String getPage_type() {
@@ -60,5 +60,23 @@ public class LoadTimeModel {
                 "val_ref_load_time=" + val_ref_load_time +
                 ", val_load_time=" + val_load_time +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof LoadTimeModel)) return false;
+
+        LoadTimeModel that = (LoadTimeModel) o;
+
+        if (val_load_time != that.val_load_time) return false;
+        return ct_poi_e != null ? ct_poi_e.equals(that.ct_poi_e) : that.ct_poi_e == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = val_load_time;
+        result = 31 * result + (ct_poi_e != null ? ct_poi_e.hashCode() : 0);
+        return result;
     }
 }

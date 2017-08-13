@@ -24,6 +24,8 @@ public class FileUtil {
 
     private static final String VAL_REF_LOAD_TIME_STR = "val_ref_load_time=";
     private static final String VAL_LOAD_TIME_STR = "val_load_time=";
+    private static final String CT_POI_E_STR = "ct_poi_e=";
+    private static final String CT_POI_STR = "ct_poi=";
 
     public static List<FlagModel> read(String filePathAndName) throws InvalidFormatException, IOException {
 
@@ -97,9 +99,13 @@ public class FileUtil {
         LoadTimeModel loadTimeModel = new LoadTimeModel();
         for (String subStr : strList) {
             if (subStr.contains(VAL_LOAD_TIME_STR)) {
-                loadTimeModel.setVal_load_time(Integer.parseInt(subStr.substring(subStr.indexOf(VAL_LOAD_TIME_STR) + VAL_LOAD_TIME_STR.length(), subStr.length())));
+                loadTimeModel.setVal_load_time((int)Double.parseDouble(subStr.substring(subStr.indexOf(VAL_LOAD_TIME_STR) + VAL_LOAD_TIME_STR.length(), subStr.length())));
             } else if (subStr.contains(VAL_REF_LOAD_TIME_STR)) {
-                loadTimeModel.setVal_ref_load_time(Integer.parseInt(subStr.substring(subStr.indexOf(VAL_REF_LOAD_TIME_STR) + VAL_REF_LOAD_TIME_STR.length(), subStr.length())));
+                loadTimeModel.setVal_ref_load_time((int)Double.parseDouble(subStr.substring(subStr.indexOf(VAL_REF_LOAD_TIME_STR) + VAL_REF_LOAD_TIME_STR.length(), subStr.length())));
+            } if(subStr.contains(CT_POI_E_STR)) {
+                loadTimeModel.setCt_poi_e(subStr.substring(subStr.indexOf(CT_POI_E_STR) + CT_POI_E_STR.length(), subStr.length()).trim());
+            } if(subStr.contains(CT_POI_STR)) {
+                loadTimeModel.setCt_poi_e(subStr.substring(subStr.indexOf(CT_POI_STR) + CT_POI_STR.length(), subStr.length()).trim());
             }
         }
 

@@ -43,6 +43,30 @@ public class FlagModel {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof FlagModel)) {
+            return false;
+        }
+
+        FlagModel flagModel = (FlagModel) obj;
+
+        if(this.loadTimeModel.getVal_load_time() != flagModel.loadTimeModel.getVal_load_time()) {
+            return false;
+        }
+
+//        if(!this.loadTimeModel.getCt_poi_e().equalsIgnoreCase (flagModel.loadTimeModel.getCt_poi_e())) {
+//            return false;
+//        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return loadTimeModel.hashCode();
+    }
+
+    @Override
     public String toString() {
         return "FlagModel{" +
                 "timestamp=" + timestamp +
